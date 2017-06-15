@@ -161,7 +161,7 @@ static void init(void)
 
 int main(void)
 {
-	freopen("sample_input.txt", "r", stdin);
+	freopen("MiniCompiler.txt", "r", stdin);
 
 	cout << "---- user output ----" << endl;
 	

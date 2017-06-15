@@ -92,7 +92,7 @@ int run() {
 
 int main() {
 	setbuf(stdout, NULL);
-	freopen("sample_input.txt", "r", stdin);
+	freopen("FolderManager.txt", "r", stdin);
 
 	int totalScore = 0;
 

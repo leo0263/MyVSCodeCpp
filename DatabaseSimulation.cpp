@@ -184,29 +184,33 @@ static void init()
 
 int main()
 {
-	//setbuf(stdout, NULL);
-	//freopen("sample_input.txt", "r", stdin);
+    bool isDebug = true;
 
-	//int T;
-	//scanf("%d", &T);
+    if (!isDebug) {
+        setbuf(stdout, NULL);
+        freopen("DatabaseSimulator.txt", "r", stdin);
 
-	//int TotalScore = 0;
-	//for (int tc = 1; tc <= T; tc++)
-	//{
-	//	init();
+        int T;
+        scanf("%d", &T);
 
-	//	run();
+        int TotalScore = 0;
+        for (int tc = 1; tc <= T; tc++)
+        {
+        	init();
 
-	//	if (Score < 0)
-	//		Score = 0;
+        	run();
 
-	//	TotalScore += Score;
-	//	printf("#%d %d\n", tc, Score);
-	//}
-	//printf("TotalScore = %d\n", TotalScore);
+        	if (Score < 0)
+        		Score = 0;
 
-	init();
-	testDataBase();
+        	TotalScore += Score;
+        	printf("#%d %d\n", tc, Score);
+        }
+        printf("TotalScore = %d\n", TotalScore);
+    } else {
+        init();
+        testDataBase();
+    }
 
 	return 0;
 }
