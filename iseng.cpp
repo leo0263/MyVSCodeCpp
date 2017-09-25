@@ -1,32 +1,145 @@
 #include <iostream>
 using namespace std;
 
-int data[5] = { 2, 3, 5, 1, 4 };
-int result[100][100];
-int n;
+int n = 3;
+int z = 5;
+int data[10];
+bool used[10];
 
-    int profit(int year, int left, int right) {
-        if (left > right) return 0;
-
-        if (result[left][right] != -1) return result[left][right];
-
-        return result[left][right] = max(
-            data[left] * year + profit(year+1, left+1, right),
-            data[right] * year + profit(year+1, left, right-1)
-        );
+void rekursif(int digit) {
+    if (digit >= n) {
+        for (int i = 0; i < n; i++) cout << data[i];
+        cout << endl;
+        return;
     }
 
+    for (int i = 1; i <= z; i++) {
+        if (!used[i]) {
+            used[i] = true;
+            data[digit] = i;
+            rekursif(digit + 1);
+            used[i] = false;
+        }
+    }
+}
 
 int main() {
-    // cin >> n;
-    // for (int i = 0; i < n; i++) cin >> data[i];
-    n = 5;
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            result[i][j] = -1;
-    
-    cout << profit(1, 0, n-1);
+    rekursif(0);
+
+    return 0;
 }
+
+// int n = 3;
+// int data[10];
+
+// void rekursif(int digit) {
+//     if (digit >= n) {
+//         for (int i = 0; i < n; i++) cout << data[i];
+//         cout << endl;
+//         return;
+//     }
+
+//     for (int i = 1; i <= n; i++) {
+//         data[digit] = i;
+//         rekursif(digit + 1);
+//     }
+// }
+
+// int main() {
+//     rekursif(0);
+
+//     return 0;
+// }
+
+
+
+// int N = 5;
+
+// int fib(int a) {
+//     if (a <= 2) return 1;
+//     return (fib(a-1) + fib(a-2));
+// }
+
+// int main() {
+//     cout << fib(N);
+
+//     return 0;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// int N;
+// int data[4][5] = {
+//     0, 0, 1, 1, 1,
+//     1, 0, 0, 0, 0,
+//     1, 0, 0, 0, 1,
+//     0, 1, 1, 0, 1
+// };
+
+// int main() {
+//     N = 3;
+
+//     for (int i = 1; i <= N; i++) {
+//         cout << i << endl;
+//     }
+
+//     for (int y = 0; y < 4; y++) {
+//         for (int x = 0; x < 5; x++) {
+//             cout << data[y][x];
+//         }
+//         cout << endl;
+//     }
+
+//     return 0;
+// }
+
+
+
+
+
+// int data[5] = { 2, 3, 5, 1, 4 };
+// int result[100][100];
+// int n;
+
+//     int profit(int year, int left, int right) {
+//         if (left > right) return 0;
+
+//         if (result[left][right] != -1) return result[left][right];
+
+//         return result[left][right] = max(
+//             data[left] * year + profit(year+1, left+1, right),
+//             data[right] * year + profit(year+1, left, right-1)
+//         );
+//     }
+
+
+// int main() {
+//     // cin >> n;
+//     // for (int i = 0; i < n; i++) cin >> data[i];
+//     n = 5;
+//     for (int i = 0; i < n; i++)
+//         for (int j = 0; j < n; j++)
+//             result[i][j] = -1;
+    
+//     cout << profit(1, 0, n-1);
+// }
 
 // 5
 // 2 3 5 1 4
