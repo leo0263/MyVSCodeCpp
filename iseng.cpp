@@ -1,33 +1,116 @@
 #include <iostream>
 using namespace std;
 
-int n = 3;
-int z = 5;
-int data[10];
-bool used[10];
+int n = 5;
+int price[5] = { 2, 3, 5, 1, 4 };
+int kiri = 0;
+int kanan = n-1;
+int profit = 0;
 
-void rekursif(int digit) {
-    if (digit >= n) {
-        for (int i = 0; i < n; i++) cout << data[i];
-        cout << endl;
-        return;
-    }
+int maksimum(int a, int b) { if (a > b) return a; else return b; }
 
-    for (int i = 1; i <= z; i++) {
-        if (!used[i]) {
-            used[i] = true;
-            data[digit] = i;
-            rekursif(digit + 1);
-            used[i] = false;
-        }
-    }
+int jual(int kiri, int kanan, int tahun) {
+    if (kiri > kanan) return 0;
+    if (tahun > n) return 0;
+
+    return (maksimum (
+        (price[kiri] * tahun) + jual(kiri + 1, kanan, tahun + 1),
+        (price[kanan] * tahun) + jual(kiri, kanan - 1, tahun + 1)
+    ));
 }
 
 int main() {
-    rekursif(0);
+    cout << jual(0, n-1, 1);
 
     return 0;
 }
+
+
+
+
+// int n = 5;
+// int price[5] = { 2, 3, 5, 1, 4 };
+// int kiri = 0;
+// int kanan = n-1;
+// int profit = 0;
+
+// int main() {
+//     for (int i = 1; i <= n; i++) {
+//         if (price[kiri] <= price[kanan]) {
+//             profit += price[kiri] * i;
+//             kiri++;
+//         } else {
+//             profit += price[kanan] * i;
+//             kanan--;
+//         }
+//     }
+
+//     cout << profit;
+
+//     return 0;
+// }
+
+
+
+
+
+// int n = 100;
+// int ans[1000];
+
+// int fib(int i) {
+//     if (i <= 2) return 1;
+
+//     if (ans[i] != -1) return ans[i];
+//     else return ans[i] = (fib (i-1) + fib(i-2));
+// }
+
+// int main() {
+//     for (int i = 0; i <= n; i++) ans[i] = -1;
+//     cout << fib(n);
+
+//     return 0;
+// }
+
+
+
+
+// int n = 5;
+// int price[5] = { 2, 3, 5, 1, 4 };
+
+// int main() {
+
+//     return 0;
+// }
+
+
+
+// int n = 3;
+// int z = 5;
+// int data[10];
+// bool used[10];
+
+// void rekursif(int digit) {
+//     if (digit >= n) {
+//         for (int i = 0; i < n; i++) cout << data[i];
+//         cout << endl;
+//         return;
+//     }
+
+//     for (int i = 1; i <= z; i++) {
+//         if (!used[i]) {
+//             used[i] = true;
+//             data[digit] = i;
+//             rekursif(digit + 1);
+//             used[i] = false;
+//         }
+//     }
+// }
+
+// int main() {
+//     rekursif(0);
+
+//     return 0;
+// }
 
 // int n = 3;
 // int data[10];
