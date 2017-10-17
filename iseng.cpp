@@ -13,7 +13,8 @@ int jual(int kiri, int kanan, int tahun) {
     if (kiri > kanan) return 0;
     if (tahun > n) return 0;
 
-    return (maksimum (
+    if (jawaban[kiri][kanan] != -1) return jawaban[kiri][kanan];
+    else return jawaban[kiri][kanan] = (maksimum (
         (price[kiri] * tahun) + jual(kiri + 1, kanan, tahun + 1),
         (price[kanan] * tahun) + jual(kiri, kanan - 1, tahun + 1)
     ));
