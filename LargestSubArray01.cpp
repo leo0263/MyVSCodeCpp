@@ -60,19 +60,29 @@ int findSubArray(int arr[], int n)
             }
         }
     }
-    
-    if (maxsize == -1) printf("No such subarray");
-    else printf("%d to %d", startindex, startindex+maxsize-1);
+
+    //if (maxsize == -1) printf("No such subarray");
+    //else printf("%d to %d", startindex, startindex+maxsize-1);
   
     return maxsize;
 }
   
 /* Driver program to test above functions */
+#include <iostream>
+using namespace std;
+
 int main()
 {
-    int arr[] =  {1, 0, 0, 1, 0, 1, 1};
-    int size = sizeof(arr)/sizeof(arr[0]);
-  
-    findSubArray(arr, size);
+    freopen("LargestSubArray01.txt", "r", stdin);
+
+    int T; cin >> T;
+    for (int t = 0; t < T; t++) {
+        int N; cin >> N;
+        int arr[N];
+        for (int i = 0; i < N; i++) cin >> arr[i];
+        
+        cout << findSubArray(arr, N) << endl;
+    }
+
     return 0;
 }
