@@ -2,6 +2,9 @@
     "files.associations": {
         "ios": "cpp",
         "algorithm": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "string_view": "cpp",
+        "system_error": "cpp",
+        "*.tcc": "cpp"
     }
 }
