@@ -80,14 +80,24 @@ bool checkRansomNotes() {
 int main(){
     
     cin >> Mag >> Ran;
+    cout << "mag:" << Mag << " ran:" << Ran << endl;
 
-    for(int i = 0; i < Mag; i++) cin >> magazine[i];
-    for(int i = 0; i < Ran; i++) cin >> ransom[i];
+    for(int i = 0; i < Mag; i++) {
+        cin >> magazine[i];
+        cout << "\nbarusan baca mag: " << magazine[i];
+    }
+    
+    for(int i = 0; i < Ran; i++) {
+        cin >> ransom[i];
+        cout << "\nbarusan baca ran: " << ransom[i];
+    }
+    
+    cout << "sapi!";
 
-    // // debug
-    // for(int i = 0; i < Mag; i++) cout << "magazine : [" << magazine[i] << "]\n";
-    // for(int i = 0; i < Ran; i++) cout << "ransom : [" << ransom[i] << "]\n";
-    // for (int i = 0; i < 30000; i++) if (data[i].isVoid != true) cout << "data[" << i << "] is not properly initialized!\n";
+    // debug
+    for(int i = 0; i < Mag; i++) cout << "magazine : [" << magazine[i] << "]\n";
+    for(int i = 0; i < Ran; i++) cout << "ransom : [" << ransom[i] << "]\n";
+    for (int i = 0; i < maxWords; i++) if (data[i].isVoid != true) cout << "data[" << i << "] is not properly initialized!\n";
 
     if(checkRansomNotes()) cout << "Yes\n";
     else cout << "No\n";
