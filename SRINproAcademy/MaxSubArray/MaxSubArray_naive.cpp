@@ -12,12 +12,28 @@ int main() {
     cin >> M;
     for (int i = 1; i <= M; i++) {
         cin >> x >> y;
+        int total = data[x];
+        bool isPositiveJump = false; int jumpIndex;
 
-        int max = data[x];
-        for (int z = x; z <= y; z++) 
-            if (data[z] > max) max = data[z];
+        if (total < 0) {
+            for (int z = x+1; z <= y; z++) {
+                if (isPositiveJump) break;
+                if (data[z] >= 0) {
+                    isPositiveJump = true;
+                    jumpIndex = z;
+                    total = data[jumpIndex];
+                } else {
+                    if (data[z] > total) total = data[z];
+                }
+            }
+        }
 
-        cout << max << endl;
+        for (int z = x+1; z <= y; z++) {
+            if (isPositiveJump && (z == jumpIndex)) continue;
+            else if (total + data[z] > total) total += data[z];
+        }
+
+        cout << total << endl;
     }
 
 
