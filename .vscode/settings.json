@@ -10,6 +10,8 @@
         "optional": "cpp",
         "thread": "cpp",
         "typeindex": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "fstream": "cpp",
+        "random": "cpp"
     }
 }
