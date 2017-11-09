@@ -1,0 +1,28 @@
+Check out the resources on the page's right side to learn more about hashing. The video tutorial is by Gayle Laakmann McDowell, author of the best-selling interview book Cracking the Coding Interview.
+
+Newspaper Clipping
+
+You are tasked to create a liberal art of word-clipping. The rules are : 
+    You may only use a cut-out words from random newspaper [words bank]
+    You have to create nice word-clipping [words art] out of those available [words bank]
+    Each cut-out words on [words bank] may only be used once
+    No cutting or concatenation of [words bank] are allowed!
+    Your art teacher are picky, so the chosen words must be exactly as intended (case sensitive)
+    
+Create a program that checks whether the available [words bank] are enough to create word-clipping art [words art]. Print "Yes" if it is, print "No" otherwise.
+
+Input Format
+
+The first line contains two space-separated integers, m and n, describing the respective number words available on [words bank] and the number of words you have to create on [words art]
+The second line contains space-separated strings denoting the words present in the [words bank]
+The third line contains space-separated strings denoting the words present in the [words art]
+
+Constraints
+
+    1 <= m, n <= 30.000
+    1 <= length of any word <= 5
+    Each word consists of English alphabetic letters (i.e., a to z and A to Z)
+
+Output Format
+
+Print "Yes" if he can use the magazine to create an untraceable replica of his ransom note; otherwise, print "No".
