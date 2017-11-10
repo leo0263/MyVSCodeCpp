@@ -1,0 +1,19 @@
+Create a Search Engine Crawler! Where one thread of the engine crawl for new strings discoveries, another thread is standing by for search query.
+
+This core of this search engine must be able to do these two query : 
+1. add "string" : store the string to the engine data corpus (library)
+2. find "string" : where the string is a prefix, the engine must return the number of available data in the library matching this prefix
+
+You have to create an engine thats able to process a sequential queries and respond properly without fail!
+
+The first line contains a single integer N, denoting the number of queries to be processed sequentially.
+The next N line contains a single query in the form of an integer [code] followed by a [string].
+    If the preceding int is 0 then the query is add "string"
+    If the preceding int is 1 then the query is find "string"
+
+1 <= n <= 10^5
+1 <= |string| <= 21
+It is guaranteed that the "string" contains lowercase, one word, english letter only
+It is guaranteed that there is no duplicate "string" for [add] queries
+
+For each query, find out how many [data] in the current library that is starting with the [prefix] string
