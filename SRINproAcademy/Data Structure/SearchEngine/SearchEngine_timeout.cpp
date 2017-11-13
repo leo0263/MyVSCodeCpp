@@ -14,7 +14,7 @@ const bool debug = false;
 struct TrieNode
 {
     struct TrieNode *children[ALPHABET_SIZE];
-    int childCount;
+ 
     // isEndOfWord is true if the node represents
     // end of a word
     bool isEndOfWord;
@@ -26,7 +26,6 @@ struct TrieNode *getNode(void)
     struct TrieNode *pNode =  new TrieNode;
  
     pNode->isEndOfWord = false;
-    pNode->childCount = 0;
  
     for (int i = 0; i < ALPHABET_SIZE; i++)
         pNode->children[i] = NULL;
@@ -40,9 +39,7 @@ struct TrieNode *getNode(void)
 void insert(struct TrieNode *root, string key)
 {
     struct TrieNode *pCrawl = root;
-    
-    pCrawl->childCount++;
-
+ 
     for (int i = 0; i < key.length(); i++)
     {
         int index = key[i] - 'a';
@@ -50,29 +47,63 @@ void insert(struct TrieNode *root, string key)
             pCrawl->children[index] = getNode();
  
         pCrawl = pCrawl->children[index];
-        pCrawl->childCount++;
     }
  
     // mark last node as leaf
     pCrawl->isEndOfWord = true;
+}
+ 
+// Returns true if key presents in trie, else
+// false
+bool search(struct TrieNode *root, string key)
+{
+    struct TrieNode *pCrawl = root;
+ 
+    for (int i = 0; i < key.length(); i++)
+    {
+        int index = key[i] - 'a';
+        if (!pCrawl->children[index])
+            return false;
+ 
+        pCrawl = pCrawl->children[index];
+    }
+ 
+    return (pCrawl != NULL && pCrawl->isEndOfWord);
+}
+
+int crawlPrefixChilds(struct TrieNode *root) {
+    if (root == NULL) return 0;
+
+    int count = 0;
+    if (root->isEndOfWord) count++;
+    for (int i = 0; i < ALPHABET_SIZE; i++) {
+        count += crawlPrefixChilds(root->children[i]);
+    }
+
+    return count;
 }
 
 int prefixCount(struct TrieNode *root, string key) {
     if (debug) cout << "prefix count [" << key << "] : ";
     struct TrieNode *p = root;
 
-    // move cursor to the end of the prefix
-    bool isPrefix = true;
-    for (int i = 0; i < key.length() && isPrefix; i++) {
-        int index = key[i] - 'a';
-        if (!p->children[index]) isPrefix = false;
-        p = p->children[index];
-        
-        if (debug) { char aChar = 'a' + index; cout << "." << aChar;}
-    }
+     // move cursor to the end of the prefix
+     bool isPrefix = true;
+     for (int i = 0; i < key.length() && isPrefix; i++) {
+         int index = key[i] - 'a';
+         if (!p->children[index]) isPrefix = false;
+         p = p->children[index];
+         
+         if (debug) { char aChar = 'a' + index; cout << "." << aChar;}
+     }
 
-    if (isPrefix) return p->childCount;
-    else return 0;
+     int count = 0;
+     if (isPrefix) {
+        count += crawlPrefixChilds(p);
+     }
+
+     if (debug) cout << endl;
+     return count;
 }
  
 // Driver
@@ -82,11 +113,11 @@ int main()
 
     int N; cin >> N;
     for (int i = 0; i < N; i++) {
-        int cc;
+        int command;
         char parameter[22];
-        cin >> cc >> parameter;
+        cin >> command >> parameter;
 
-        if (cc == 0) insert(root, parameter);
+        if (command == 0) insert(root, parameter);
         else cout << prefixCount(root, parameter) << endl;
     }
 
