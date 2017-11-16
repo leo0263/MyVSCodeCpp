@@ -1,0 +1,27 @@
+You are given a bunch of unsorted integers. Your task is to find all pairs of number that have the smallest difference between them. Then output them in ascending order.
+
+First line contain single integer N, representing the number of integers available.
+The next line contains N integer I separated by space. These are the number that you have to process.
+
+Output all pairs of integer with the smallest difference between them.
+If there is multiple pairs with same smallest differece, print them all in ascending order.
+Give a single space separating each numbers.
+If there is a number that lies in two pairs, print it two times.
+
+2 <= N <= 200.000
+-10^7 <= I <= 10^7
+Ii != Ij where 1 <= i < j <= N
+
+Sample input : 
+5
+10 3 4 30 40
+
+Sample output : 
+3 4
+
+Sample input :
+3
+1 2 3
+
+Sample output : 
+1 2 2 3
