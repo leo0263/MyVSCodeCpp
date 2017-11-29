@@ -4,7 +4,7 @@
 #include <queue>
 using namespace std;
 int R, C;
-int map[100][100];
+int map[1000][1000];
 
 // function to check whether a cell is valid / invalid
 bool isvalid(int i, int j)
