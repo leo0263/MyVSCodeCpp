@@ -18,14 +18,14 @@ struct node *newNode(int item)
 {
     struct node *temp =  new node();
     temp->key = item;
-    temp->left = temp->right = NULL;
+    temp->left = temp->right = nullptr;
     return temp;
 }
   
 // A utility function to do inorder traversal of BST
 void inorder(struct node *root)
 {
-    if (root != NULL)
+    if (root != nullptr)
     {
         inorder(root->left);
         printf("%d \n", root->key);
@@ -37,7 +37,7 @@ void inorder(struct node *root)
 struct node* insert(struct node* node, int key)
 {
     /* If the tree is empty, return a new node */
-    if (node == NULL) return newNode(key);
+    if (node == nullptr) return newNode(key);
  
     /* Otherwise, recur down the tree */
     if (key < node->key)
@@ -57,7 +57,7 @@ struct node * minValueNode(struct node* node)
     struct node* current = node;
 
     /* loop down to find the leftmost leaf */
-    while (current->left != NULL)
+    while (current->left != nullptr)
         current = current->left;
 
     return current;
@@ -68,7 +68,7 @@ struct node * minValueNode(struct node* node)
 struct node* deleteNode(struct node* root, int key)
 {
     // base case
-    if (root == NULL) return root;
+    if (root == nullptr) return root;
 
     // If the key to be deleted is smaller than the root's key,
     // then it lies in left subtree
@@ -85,13 +85,13 @@ struct node* deleteNode(struct node* root, int key)
     else
     {
         // node with only one child or no child
-        if (root->left == NULL)
+        if (root->left == nullptr)
         {
             struct node *temp = root->right;
             free(root);
             return temp;
         }
-        else if (root->right == NULL)
+        else if (root->right == nullptr)
         {
             struct node *temp = root->left;
             free(root);
@@ -114,8 +114,8 @@ struct node* deleteNode(struct node* root, int key)
 // C function to search a given key in a given BST
 struct node* search(struct node* root, int key)
 {
-    // Base Cases: root is null or key is present at root
-    if (root == NULL || root->key == key)
+    // Base Cases: root is nullptr or key is present at root
+    if (root == nullptr || root->key == key)
     return root;
     
     // Key is greater than root's key
@@ -129,8 +129,13 @@ struct node* search(struct node* root, int key)
 // adding multiple search functions -----------------------------------------
 // capable to handle multiple search result, stored in searchResult struct
 struct searchResults {
-    node *result = NULL;
-    searchResults *next = NULL;
+    node *result;
+    searchResults *next;
+
+    searchResults() {
+        result = nullptr;
+        next = nullptr;
+    }
 };
 
 struct searchResults *multiSearch(node *root, int key) {
@@ -138,8 +143,8 @@ struct searchResults *multiSearch(node *root, int key) {
     searchResults *p = multiSearchResult;
 
     node *s = search(root, key);
-    while (s != NULL) {
-        if (p->result == NULL) {
+    while (s != nullptr) {
+        if (p->result == nullptr) {
             p->result = s;
         } else {
             searchResults *n = new searchResults();            
@@ -149,13 +154,14 @@ struct searchResults *multiSearch(node *root, int key) {
         }
         s = search(s->right, key);
     }
-
+    cout << "sibabi!\n";
     return multiSearchResult;
 }
 
 void printMultiSearchResult(searchResults *s) {
     cout << "multi search result :";
-    while (s != NULL) {
+    while (s != nullptr) {
+        if (s->result == nullptr) break;
         cout << " " << s->result->key;
         s = s->next;
     }
@@ -172,7 +178,7 @@ int main()
           30      70
          /  \    /  \
        20   40  60   80 */
-       struct node *root = NULL;
+       struct node *root = nullptr;
        root = insert(root, 50);
        root = insert(root, 30);
        root = insert(root, 20);
@@ -211,7 +217,7 @@ int main()
        inorder(root);
 
        int toSearch;
-       struct node *result = NULL;
+       struct node *result = nullptr;
        
        toSearch = 20;
        result = search(root, toSearch);
@@ -223,13 +229,13 @@ int main()
        if (result) printf("try search(%d) -> FOUND!\n", toSearch);
        else printf("try search(%d) -> NOT FOUND!\n", toSearch);
 
-       toSearch = 40;
+       toSearch = 20;
        cout << "\ntrying multi search of " << toSearch << endl;
        printMultiSearchResult(multiSearch(root, toSearch));
 
        toSearch = 43;
        cout << "\ntrying multi search of " << toSearch << endl;
-       printMultiSearchResult(multiSearch(root, toSearch));
+       printMultiSearchResult(nullptr);
 
     
        return 0;
