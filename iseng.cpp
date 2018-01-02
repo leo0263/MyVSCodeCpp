@@ -1,30 +1,62 @@
 #include <iostream>
 using namespace std;
 
-int n = 5;
-int price[5] = { 2, 3, 5, 1, 4 };
-int kiri = 0;
-int kanan = n-1;
-int profit = 0;
-
-int maksimum(int a, int b) { if (a > b) return a; else return b; }
-
-int jual(int kiri, int kanan, int tahun) {
-    if (kiri > kanan) return 0;
-    if (tahun > n) return 0;
-
-    if (jawaban[kiri][kanan] != -1) return jawaban[kiri][kanan];
-    else return jawaban[kiri][kanan] = (maksimum (
-        (price[kiri] * tahun) + jual(kiri + 1, kanan, tahun + 1),
-        (price[kanan] * tahun) + jual(kiri, kanan - 1, tahun + 1)
-    ));
-}
-
 int main() {
-    cout << jual(0, n-1, 1);
+    int a = 0^1^2^3^4^5^6^7^8^9^10^11^12^13^14^15;
+    int b = 65 ^ 27 ^ 9 ^ 1 ^ 4 ^ 3 ^ 40 ^ 50 ^ 91 ^ 7 ^ 6 ^ 0 ^ 2 ^ 5 ^ 68 ^ 22;
+    cout << a << endl;
+    cout << b << endl;
 
     return 0;
 }
+
+
+// #define limit 100
+
+// int main() {
+//     cout << 100 % limit << endl;
+//     cout << -100 % limit << endl;
+//     cout << 101 % limit << endl;
+//     cout << -101 % limit << endl;
+//     cout << 210 % limit << endl;
+//     cout << -210 % limit << endl;
+//     cout << 1 % limit << endl;
+//     cout << -1 % limit << endl;
+
+//     return 0;
+// }
+
+
+
+
+
+
+
+
+// int n = 5;
+// int price[5] = { 2, 3, 5, 1, 4 };
+// int kiri = 0;
+// int kanan = n-1;
+// int profit = 0;
+
+// int maksimum(int a, int b) { if (a > b) return a; else return b; }
+
+// int jual(int kiri, int kanan, int tahun) {
+//     if (kiri > kanan) return 0;
+//     if (tahun > n) return 0;
+
+//     if (jawaban[kiri][kanan] != -1) return jawaban[kiri][kanan];
+//     else return jawaban[kiri][kanan] = (maksimum (
+//         (price[kiri] * tahun) + jual(kiri + 1, kanan, tahun + 1),
+//         (price[kanan] * tahun) + jual(kiri, kanan - 1, tahun + 1)
+//     ));
+// }
+
+// int main() {
+//     cout << jual(0, n-1, 1);
+
+//     return 0;
+// }
 
 
 
